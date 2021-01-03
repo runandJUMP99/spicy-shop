@@ -1,0 +1,5 @@
+.Jumbotron {
+    background: #ecb390;
+    display: flex;
+    justify-content: space-between;
+}
