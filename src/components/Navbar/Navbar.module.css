@@ -1,6 +1,10 @@
 .Navbar {
+    align-items: center;
+    background: #fcf8e8;
+    box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: space-between;
-    margin: 0 0.5rem;
-    padding: 0.5rem 0;
+    padding: 0 0.5rem;
+    position: relative;
+    z-index: 5;
 }

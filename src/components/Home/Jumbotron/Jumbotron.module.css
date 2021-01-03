@@ -1,5 +1,52 @@
 .Jumbotron {
+    align-items: center;
     background: #ecb390;
     display: flex;
     justify-content: space-between;
+    padding: 4rem 2rem;
+    position: relative;
+}
+
+.Text h1 {
+    color: #fcf8e8;
+    font-size: 3rem;
+}
+
+.ImageGroup {
+    margin: 0 2rem;
+    text-align: right;
+}
+
+.ImageGroup img {
+    border-radius: 50%;
+    width: 50%;
+}
+
+.BigSquare,
+.MediumSquare,
+.LittleSquare {
+    border: 4px solid #fcf8e8;
+    opacity: 0.3;
+    position: absolute;
+}
+
+.BigSquare {
+    height: 12rem;
+    right: 20rem;
+    top: 2rem;
+    width: 12rem;
+}
+
+.MediumSquare {
+    height: 8rem;
+    right: 3rem;
+    top: 12rem;
+    width: 8rem;
+}
+
+.LittleSquare {
+    bottom: 3rem;
+    height: 3rem;
+    right: 18rem;
+    width: 3rem;
 }

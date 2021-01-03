@@ -8,6 +8,7 @@ import classes from "./Navbar.module.css";
 const Navbar = () => {
     return (
         <div className={classes.Navbar}>
+            <p>Free Shipping on orders of $50 or more!</p>
             <Logo />
             <Links />
         </div>

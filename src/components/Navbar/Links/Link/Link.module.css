@@ -1,3 +1,9 @@
-.Link{
-    margin: 0 0.5rem;
+.Link {
+    font-weight: bold;
+    margin: 0 1rem;
+}
+
+.Link a {
+    color: #df7861;
+    text-decoration: none;
 }

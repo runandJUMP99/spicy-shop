@@ -1,15 +1,17 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
 
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+
 import classes from "./CTAButton.module.css";
 
-const CTAButton = () => {
+const CTAButton = ({styles}) => {
     return (
-        <div className={classes.CTAButton}>
+        <button className={classes.CTAButton} style={styles}>
             <NavLink to="/products">
-                Start Shopping
+                Start Shopping <ShoppingCartIcon />
             </NavLink>
-        </div>
+        </button>
     );
 }
 
