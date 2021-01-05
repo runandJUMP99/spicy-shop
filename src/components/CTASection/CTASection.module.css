@@ -1,0 +1,12 @@
+.CTASection {
+    background: #ecb390;
+    margin: auto;
+    padding: 4rem 1rem;
+    text-align: center;
+}
+
+.CTASection h1 {
+    color: white;
+    margin: 0 auto 2rem;
+    width: 65%;
+}

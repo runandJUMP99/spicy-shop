@@ -1,11 +1,18 @@
-import React from "react";
+import React, {useState} from "react";
+
+import Product from "./Product/Product";
 
 import classes from "./NewProducts.module.css";
 
 const NewProducts = () => {
     return (
         <div className={classes.NewProducts}>
-            New Products
+            <h2>New Creations</h2>
+            <div className={classes.Products}>
+                <Product />
+                <Product />
+                <Product />
+            </div>
         </div>
     );
 }

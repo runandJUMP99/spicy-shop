@@ -1,0 +1,13 @@
+.NewProducts {
+    margin: 4rem auto;
+    text-align: center;
+}
+
+.Products {
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    justify-content: center;
+    max-width: 1100px;
+    padding: 1rem;
+}

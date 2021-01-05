@@ -1,0 +1,49 @@
+.FeaturedProducts {
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.Display {
+    background: #ffe6d1;
+    border-radius: 16px;
+    display: flex;
+    margin: 4rem auto;
+    overflow: hidden;
+    width: 60%;
+}
+
+.Display img {
+    width: 60%;
+}
+
+.Text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2rem 1.5rem;  
+}
+
+.Text p{
+    margin: 0;
+}
+
+.Controls {
+    display: flex;
+    justify-content: center;
+}
+
+.Controls button {
+    background: #df7861;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    height: 0.75rem;
+    margin: 0 1rem;
+    opacity: 0.3;
+    transition: all 0.25s ease-out;
+    width: 0.75rem;
+}
+
+.Controls button:hover {
+    opacity: 0.4;
+}

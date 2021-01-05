@@ -1,0 +1,36 @@
+.Product {
+    border: 1px solid black;
+    cursor: pointer;
+    height: 20rem;
+    margin: 1rem;
+    overflow: hidden;
+    position: relative;
+    width: 18rem;   
+}
+
+.Product img {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+}
+
+.Overlay {
+    align-items: center;
+    background: rgba(252, 248, 232, 0.7);
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    position: absolute;
+    transition: all 0.4s ease-out;
+    width: 100%;
+}
+
+.Overlay button {
+    background: #df7861;
+    border: none;
+    color: #fcf8e8;
+    cursor: pointer;
+    font-size: 1.5rem;
+    margin-top: 4rem;
+    padding: 0.5rem 1rem;
+}
