@@ -1,0 +1,15 @@
+.Links {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.Links a {
+    color: white;
+    margin: 0.5rem 0;
+    text-decoration: none;
+}
+
+.Links a:hover {
+    color: #eee;
+}

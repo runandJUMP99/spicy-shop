@@ -1,0 +1,22 @@
+.Contact {
+
+}
+
+.Contact p {
+    
+}
+
+.Contact a {
+    align-items: center;
+    color: white;
+    display: flex;
+    text-decoration: none;
+}
+
+.Contact a:hover {
+    color: #eee;
+}
+
+.Contact svg {
+    margin: 0 0.25rem;
+}

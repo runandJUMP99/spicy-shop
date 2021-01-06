@@ -1,52 +1,29 @@
 .Jumbotron {
-    align-items: center;
-    background: #ecb390;
-    display: flex;
-    justify-content: space-between;
-    padding: 4rem 2rem;
+    background: linear-gradient(to top,rgba(0, 0, 0, 0.4) 55%, transparent), 
+    url("https://cdn.pixabay.com/photo/2016/11/23/17/24/automobile-1853936__340.jpg") 0%/cover no-repeat border-box;
+    padding: 8rem 2rem;
     position: relative;
+    text-align: center;
 }
 
-.Text h1 {
-    color: #fcf8e8;
+.Jumbotron h1 {
+    color:  rgba(252, 248, 232, 0.9);
     font-size: 3rem;
+    margin: 1rem auto;
 }
 
-.ImageGroup {
-    margin: 0 2rem;
-    text-align: right;
+.Jumbotron button {
+    background: transparent;
+    border: 2px solid rgba(252, 248, 232, 0.9);
+    color:  rgba(252, 248, 232, 0.9);
+    cursor: pointer;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    transition: all 0.25s ease-out;
 }
 
-.ImageGroup img {
-    border-radius: 50%;
-    width: 50%;
-}
-
-.BigSquare,
-.MediumSquare,
-.LittleSquare {
-    border: 4px solid #fcf8e8;
-    opacity: 0.3;
-    position: absolute;
-}
-
-.BigSquare {
-    height: 12rem;
-    right: 20rem;
-    top: 2rem;
-    width: 12rem;
-}
-
-.MediumSquare {
-    height: 8rem;
-    right: 3rem;
-    top: 12rem;
-    width: 8rem;
-}
-
-.LittleSquare {
-    bottom: 3rem;
-    height: 3rem;
-    right: 18rem;
-    width: 3rem;
+.Jumbotron button:hover {
+    background: #fcf8e8;
+    border: 2px solid #fcf8e8;
+    color: #df7861;
 }

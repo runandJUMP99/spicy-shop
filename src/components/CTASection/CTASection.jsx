@@ -7,7 +7,7 @@ import classes from "./CTASection.module.css";
 const CTASection = () => {
     return (
         <div className={classes.CTASection}>
-            <h1>Hot girl nerds! Anime lovers! Let us create our own corner of the universe!</h1>
+            <h1>Hot girl nerds! Anime lovers! Let's create our own corner of the universe!</h1>
             <CTAButton />
         </div>
     );

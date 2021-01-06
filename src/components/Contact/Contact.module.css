@@ -1,0 +1,47 @@
+.ContactUs {
+    margin: auto;
+    max-width: 600px;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.ContactUs h4 {
+    margin-bottom: 1rem;
+}
+
+.ContactUs button {
+    background: #df7861;
+    border: none;
+    color: #fcf8e8;
+    cursor: pointer;
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+    transition: all 0.25s ease-out;
+}
+
+.ContactUs button:hover {
+    background: #f5a391;
+}
+
+.ContactUs img {
+    animation: appear 1s ease-out;
+    margin-top: 2rem;
+    max-width: 250px;
+    width: 100%;
+}
+
+.Captcha {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin: 1rem auto;
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

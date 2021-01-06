@@ -1,0 +1,24 @@
+.Newsletter {
+    color: white;
+    padding: 2rem 0;
+    width: 40%;
+}
+
+.Form input {
+    border: none;
+    padding: 0.5rem;
+}
+
+.Form button {
+    background: #fcf8e8;
+    border: none;
+    color: #df7861;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 0 0.5rem;
+    padding: 0.5rem 1rem;
+}
+
+.Form button:hover {
+    background: #f1ecd8;
+}

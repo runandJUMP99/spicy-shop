@@ -1,0 +1,18 @@
+.OwnerProfile {
+    display: flex;
+    padding: 3rem 1rem;
+    justify-content: space-around;
+}
+
+.OwnerProfile h2 {
+    color: #df7861;
+}
+
+.OwnerProfile img {
+    width: 40%;
+}
+
+.Text {
+    line-height: 1.5;
+    width: 40%;
+}

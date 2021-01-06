@@ -1,3 +1,11 @@
 .Footer {
     background: #df7861;
+    padding: 2rem 2rem 0;
+}
+
+.MainContent {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
 }
