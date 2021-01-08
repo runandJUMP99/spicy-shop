@@ -8,7 +8,7 @@ import classes from "./CTAButton.module.css";
 const CTAButton = ({styles}) => {
     return (
         <button className={classes.CTAButton} style={styles}>
-            <NavLink to="/products">
+            <NavLink to="/shop">
                 Start Shopping <ShoppingCartIcon />
             </NavLink>
         </button>

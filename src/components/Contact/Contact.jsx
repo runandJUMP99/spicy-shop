@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 
-import ReCAPTCHA from "react-google-recaptcha";
-import emailjs from "emailjs-com";
+// import ReCAPTCHA from "react-google-recaptcha";
+// import emailjs from "emailjs-com";
 
 import Input from "../UI/Input/Input";
 import Spinner from "../UI/Spinner/Spinner";
@@ -52,7 +52,7 @@ const ContactUs = () => {
         message: {
             elementType: 'textarea',
             elementConfig: {
-                placeholder: 'Description',
+                placeholder: 'Type your message here...',
                 rows: 4
             },
             value: "",

@@ -1,20 +1,22 @@
 .CTAButton {
-    background: #d4e2d4;
     border: none;
-    border-radius: 8px;
     cursor: pointer;
     font-size: 1.25rem;
     font-weight: bold;  
-    padding: 1rem;
-    transition: all 0.25s ease-out;
-}
-
-.CTAButton:hover {
-    background: #e4ece4;
+    padding: 0 !important;
 }
 
 .CTAButton a {
     align-items: center;
+    background: #d4e2d4;
+    border-radius: 4px;
+    color: #060668;
     display: flex;
+    padding: 0.5rem;
     text-decoration: none;
+    transition: all 0.25s ease-out;
+}
+
+.CTAButton a:hover {
+    background: #e4ece4;
 }

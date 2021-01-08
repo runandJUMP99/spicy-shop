@@ -1,0 +1,31 @@
+.CartItem {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    max-width: 800px;
+    width: 90%;
+}
+
+.CartItem img {
+    margin: 0 1rem;
+    object-fit: contain;
+    width: 5rem;
+}
+
+.CartItem button {
+    border-radius: 8px;
+}
+
+.CartItemLeft {
+    display: flex;
+}
+
+.CartItemRight {
+    align-items: center;
+    display: flex;
+}
+
+.CartItemRight p {
+    margin: 0 0.5rem;
+}
