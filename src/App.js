@@ -3,6 +3,7 @@ import {Route, Switch} from "react-router-dom";
 
 import About from "./components/About/About";
 import Cart from "./components/Shop/Cart/Cart";
+import Checkout from "./components/Shop/Cart/Checkout/Checkout";
 import Contact from "./components/Contact/Contact";
 import Footer from "./components/Footer/Footer";
 import Home from "./components/Home/Home";
@@ -28,23 +29,23 @@ function App() {
       setCart(cart);
   }
 
-  // const handleUpdateCartQty = async (productId, quantity) => {
-  //   const {cart} = await commerce.cart.update(productId, {quantity});
+  const handleUpdateCartQty = async (productId, quantity) => {
+    const {cart} = await commerce.cart.update(productId, {quantity});
 
-  //   setCart(cart);
-  // }
+    setCart(cart);
+  }
 
-  // const handleRemoveFromCart = async (produ    ctId) => {
-  //   const {cart} = await commerce.cart.remove(productId);
+  const handleRemoveFromCart = async (productId) => {
+    const {cart} = await commerce.cart.remove(productId);
 
-  //   setCart(cart);
-  // }
+    setCart(cart);
+  }
 
-  // const handleEmptyCart = async () => {
-  //   const {cart} = await commerce.cart.empty();
+  const handleEmptyCart = async () => {
+    const {cart} = await commerce.cart.empty();
 
-  //   setCart(cart);
-  // }
+    setCart(cart);
+  }
 
   // const refreshCart = async () => {
   //   const newCart = await commerce.cart.refresh();
@@ -69,7 +70,8 @@ function App() {
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/about" exact component={About} />
-            <Route path="/cart" exact render={() => <Cart cart={cart} />} />
+            <Route path="/cart" exact render={() => <Cart cart={cart} handleEmptyCart={handleEmptyCart} handleUpdateCartQty={handleUpdateCartQty} handleRemoveFromCart={handleRemoveFromCart} />} />
+            <Route path="/checkout" exact render={() => <Checkout cart={cart} />} />
             <Route path="/contact" exact component={Contact} />
             <Route path="/shop" exact render={() => <Shop addToCart={addToCart} />} />
           </Switch>

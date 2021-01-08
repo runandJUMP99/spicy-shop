@@ -1,10 +1,10 @@
 .CartItem {
     align-items: center;
+    border-bottom: 2px solid black;
     display: flex;
     justify-content: space-between;
     margin: auto;
-    max-width: 800px;
-    width: 90%;
+    padding: 1.5rem 1rem;
 }
 
 .CartItem img {
@@ -13,19 +13,33 @@
     width: 5rem;
 }
 
-.CartItem button {
-    border-radius: 8px;
-}
-
 .CartItemLeft {
     display: flex;
 }
 
-.CartItemRight {
+.CartItemControls {
     align-items: center;
     display: flex;
 }
 
-.CartItemRight p {
-    margin: 0 0.5rem;
+.CartItemControls button {
+    align-items: center;
+    border: none;
+    color: #7c7c7c;
+    display: flex;
+    font-size: 1.5rem;
+    height: 2rem;
+    justify-content: center;
+    opacity: 0.4;
+    width: 2rem;
+}
+
+.CartItemControls p {
+    font-size: 1.25rem;
+    margin: 0 0.75rem;
+}
+
+.Delete {
+    background: #dddcdc;
+    margin-left: 2rem;
 }
