@@ -56,8 +56,9 @@ function App() {
 
   const captureCheckout = async (checkoutTokenId, newOrder) => {
     try {
-      console.log(checkoutTokenId, newOrder);
+      console.log(newOrder);
       const incomingOrder = await commerce.checkout.capture(checkoutTokenId, newOrder);
+      console.log(incomingOrder);
 
       setOrder(incomingOrder);
       refreshCart();
@@ -69,7 +70,7 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar />
+      <Navbar totalItems={cart.total_items} />
         <Suspense fallback="Loading...">
           <Switch>
             <Route path="/" exact component={Home} />

@@ -5,12 +5,12 @@ import Logo from "../UI/Logo/Logo";
 
 import classes from "./Navbar.module.css";
 
-const Navbar = () => {
+const Navbar = ({totalItems}) => {
     return (
         <div className={classes.Navbar}>
             <p>Free Shipping on orders of $50 or more!</p>
             <Logo />
-            <Links />
+            <Links totalItems={totalItems} />
         </div>
     );
 }

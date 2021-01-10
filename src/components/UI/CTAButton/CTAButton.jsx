@@ -5,7 +5,7 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
 import classes from "./CTAButton.module.css";
 
-const CTAButton = ({styles}) => {
+const CTAButton = ({styles, totalItems}) => {
     const location = useLocation();
 
     return (
@@ -14,7 +14,8 @@ const CTAButton = ({styles}) => {
             borderRadius: location.pathname === "/shop" && "50%",
             display: location.pathname === "/cart" && "none"
         }}>
-            <NavLink to={location.pathname === "/shop" ? "/cart" : "/shop"}>
+            <NavLink to={location.pathname === "/shop" ? "/cart" : "/shop"} style={{borderRadius: location.pathname === "/shop" && "50%"}}>
+                <div className={classes.CartTotal}>{totalItems}</div>
                 {location.pathname !== "/shop" && "Start Shopping"} <ShoppingCartIcon />
             </NavLink>
         </button>
