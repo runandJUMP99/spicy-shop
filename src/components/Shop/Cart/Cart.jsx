@@ -14,7 +14,7 @@ const Cart = ({cart, handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart}
             <h3>Shopping Cart</h3>
             <div className={classes.CartItems}>
                 {cart.line_items && cart.line_items.map(item => (
-                    <CartItem handleRemoveFromCart={handleRemoveFromCart} handleUpdateCartQty={handleUpdateCartQty} item={item} />
+                    <CartItem key={item.id} handleRemoveFromCart={handleRemoveFromCart} handleUpdateCartQty={handleUpdateCartQty} item={item} />
                 ))}
             </div>
             <div className={classes.Controls}>

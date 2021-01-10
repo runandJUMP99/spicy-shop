@@ -26,12 +26,18 @@
     align-items: center;
     border: none;
     color: #7c7c7c;
+    cursor: pointer;
     display: flex;
     font-size: 1.5rem;
     height: 2rem;
     justify-content: center;
     opacity: 0.4;
+    transition: all 0.25s ease-out;
     width: 2rem;
+}
+
+.CartItemControls button:hover {
+    opacity: 1;
 }
 
 .CartItemControls p {

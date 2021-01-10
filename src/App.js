@@ -14,6 +14,8 @@ import {commerce} from "./lib/commerce";
 
 function App() {
   const [cart, setCart] = useState({});
+  const [order, setOrder] = useState({});
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     fetchCart();
@@ -47,21 +49,23 @@ function App() {
     setCart(cart);
   }
 
-  // const refreshCart = async () => {
-  //   const newCart = await commerce.cart.refresh();
-  //   setCart(newCart);
-  // }
+  const refreshCart = async () => {
+    const newCart = await commerce.cart.refresh();
+    setCart(newCart);
+  }
 
-  // const handleCaptureCheckout = async (checkoutTokenId, newOrder) => {
-  //   try {
-  //     const incomingOrder = await commerce.checkout.capture(checkoutTokenId, newOrder);
+  const captureCheckout = async (checkoutTokenId, newOrder) => {
+    try {
+      console.log(checkoutTokenId, newOrder);
+      const incomingOrder = await commerce.checkout.capture(checkoutTokenId, newOrder);
 
-  //     setOrder(incomingOrder);
-  //     refreshCart();
-  //   } catch(error) {
-  //     setErrorMessage(error.data.error.message);
-  //   }
-  // }
+      setOrder(incomingOrder);
+      refreshCart();
+    } catch(error) {
+      console.log(error);
+      setErrorMessage(error.data.error.message);
+    }
+  }
 
   return (
     <div className="App">
@@ -71,7 +75,7 @@ function App() {
             <Route path="/" exact component={Home} />
             <Route path="/about" exact component={About} />
             <Route path="/cart" exact render={() => <Cart cart={cart} handleEmptyCart={handleEmptyCart} handleUpdateCartQty={handleUpdateCartQty} handleRemoveFromCart={handleRemoveFromCart} />} />
-            <Route path="/checkout" exact render={() => <Checkout cart={cart} />} />
+            <Route path="/checkout" exact render={() => <Checkout captureCheckout={captureCheckout} cart={cart} error={errorMessage} order={order} />} />
             <Route path="/contact" exact component={Contact} />
             <Route path="/shop" exact render={() => <Shop addToCart={addToCart} />} />
           </Switch>

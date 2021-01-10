@@ -4,7 +4,6 @@ import {Paper, Stepper, Step, StepLabel} from "@material-ui/core";
 
 import AddressForm from "./AddressForm/AddressForm";
 import Confirmation from "./Confirmation/Confirmation";
-import OrderSummary from "./OrderSummary/OrderSummary";
 import PaymentForm from "./PaymentForm/PaymentForm";
 
 import classes from "./Checkout.module.css";
@@ -14,17 +13,24 @@ const Checkout = ({cart, order, captureCheckout, error}) => {
     const [activeStep, setActiveStep] = useState(0);
     const [checkoutToken, setCheckoutToken] = useState(null);
     const [shippingData, setShippingData] = useState({});
-    const steps = ["Shipping Address", "Payment Details", "Order Summary", "Confirmation"];
-    const stepContent = [<AddressForm />, <PaymentForm />, <OrderSummary />, <Confirmation />];
+    const steps = ["Shipping Address", "Payment Details", "Confirmation"];
+    const stepContent = [
+        <AddressForm checkoutToken={checkoutToken} next={next} />,
+        <PaymentForm backStep={backStep} captureCheckout={captureCheckout} checkoutToken={checkoutToken} nextStep={nextStep} shippingData={shippingData} />,
+        <Confirmation error={error} order={order} />
+    ];
 
     useEffect(() => {
         const generateToken = async () => {
             try {
                 const token = await commerce.checkout.generateToken(cart.id, {type: "cart"});
+                setCheckoutToken(token);
             } catch(error) {
                 console.log(error);
             }
         }
+
+        generateToken();
     }, [cart]);
 
     function backStep() {
@@ -51,7 +57,7 @@ const Checkout = ({cart, order, captureCheckout, error}) => {
                         </Step>
                     ))}
                 </Stepper>
-                {stepContent[activeStep]}
+                {checkoutToken && stepContent[activeStep]}
             </Paper>
         </div>
     );

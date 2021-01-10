@@ -1,58 +1,24 @@
 import React from "react";
+import {useFormContext, Controller} from "react-hook-form";
 
-import classes from "./Input.module.css";
+import {TextField, Grid} from "@material-ui/core";
 
-const Input = (props) => {
-    let inputElement = null;
-    const inputClasses = [classes.InputElement];
-
-    if (props.invalid && props.shouldValidate && props.touched) {
-        inputClasses.push(classes.Invalid);
-    }
-
-    switch (props.elementType) {
-        case ("input"):
-            inputElement = <input 
-                className={inputClasses.join(" ")} 
-                {...props.elementConfig} 
-                value={props.value}
-                onChange={props.changed}/>;
-            break;
-        case ("textarea"):
-            inputElement = <textarea 
-                className={inputClasses.join(" ")} 
-                {...props.elementConfig} 
-                value={props.value}
-                onChange={props.changed}/>;
-            break;
-        case ("select"):
-            inputElement = (
-                <select 
-                    className={inputClasses.join(" ")}
-                    value={props.value}
-                    onChange={props.changed}>
-                    {props.elementConfig.options.map(option => (
-                        <option key={option.value} value={option.value}>
-                            {option.displayValue}
-                        </option>
-                    ))}
-                </select>
-            );
-            break;
-        default:
-            inputElement = <input 
-                className={inputClasses.join(" ")} 
-                {...props.elementConfig} 
-                value={props.value}
-                onChange={props.changed}/>;
-    }
+const Input = ({name, label, required}) => {
+    const {control} = useFormContext();
 
     return (
-        <div className={classes.Input}>
-            <label className={classes.Label}>{props.label}</label>
-            {inputElement}
-        </div>
-    )
+        <Grid item xs={12} sm={6}>
+            <Controller 
+                as={TextField}
+                control={control}
+                defaultValue=""
+                fullWidth
+                name={name}
+                label={label}
+                required={required}
+            />
+        </Grid>
+    );
 }
 
 export default Input;

@@ -1,321 +1,118 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
+import {Link} from "react-router-dom";
+import {useForm, FormProvider} from "react-hook-form";
+
+import {InputLabel, Select, MenuItem, Button, Grid, Typography} from "@material-ui/core";
+
+import Input from "../../../../UI/Input/Input";
 
 import classes from "./AddressForm.module.css";
+import {commerce} from "../../../../../lib/commerce";
 
-const AddressForm = () => {
-    const [form, setForm] = useState({
-        firstName: {
-            elementType: "input",
-            elementConfig: {
-                type: "text",
-                placeholder: "First Name"
-            },
-            value: "",
-            validation: {
-                required: true
-            },
-            valid: true,
-            touched: false
-        },
-        lastName: {
-            elementType: "input",
-            elementConfig: {
-                type: "text",
-                placeholder: "Last Name"
-            },
-            value: "",
-            validation: {
-                required: true
-            },
-            valid: false,
-            touched: false
-        },
-        address: {
-            elementType: "input",
-            elementConfig: {
-                type: "text",
-                placeholder: "Address"
-            },
-            value: "",
-            validation: {
-                required: true
-            },
-            valid: false,
-            touched: false
-        },
-        email: {
-            elementType: "input",
-            elementConfig: {
-                type: "email",
-                placeholder: "Email"
-            },
-            value: "",
-            validation: {
-                required: true
-            },
-            valid: false,
-            touched: false
-        },
-        city: {
-            elementType: "input",
-            elementConfig: {
-                placeholder: "City"
-            },
-            value: "",
-            validation: {
-                required: true
-            },
-            valid: false,
-            touched: false
-        },
-        zip: {
-            elementType: "input",
-            elementConfig: {
-                placeholder: "Zip / Postal Code"
-            },
-            value: "",
-            validation: {
-                required: true
-            },
-            valid: true,
-            touched: false
+const AddressForm = ({checkoutToken, next}) => {
+    const [shippingCountries, setShippingCountries] = useState([]);
+    const [shippingCountry, setShippingCountry] = useState("");
+    const [shippingSubdivisions, setShippingSubdivisions] = useState([]);
+    const [shippingSubdivision, setShippingSubdivision] = useState("");
+    const [shippingOptions, setShippingOptions] = useState([]);
+    const [shippingOption, setShippingOption] = useState("");
+    const methods = useForm();
+
+    const countries = Object.entries(shippingCountries).map(([key, value]) => ({id: key, label: value}));
+    const subdivisions = Object.entries(shippingSubdivisions).map(([key, value]) => ({id: key, label: value}));
+    const options = shippingOptions.map(shippingOption => ({
+        id: shippingOption.id, 
+        label: `${shippingOption.description} - (${shippingOption.price.formatted_with_symbol})`
+    }));
+
+    useEffect(() => {
+        fetchShippingCountries(checkoutToken.id);
+    }, []);
+
+    useEffect(() => {
+        if (shippingCountry) {
+            fetchSubdivisions(shippingCountry);
         }
-    });
+    }, [shippingCountry]);
 
-    // const [formIsValid, setFormIsValid] = useState(false);
-    // const [candleImage, setCandleImage] = useState(<CandleImg />);
-    // const [imageAsFile, setImageAsFile] = useState("");
-    // const [imgLoading, setImgLoading] = useState(false);
-    // const [status, setStatus] = useState(null);
+    useEffect(() => {
+        if (shippingSubdivision) {
+            fetchShippingOptions(checkoutToken.id, shippingCountry, shippingSubdivision);
+        }
+    }, [shippingSubdivision]);
 
-    // useEffect(() => {
-    //     setFormIsValid(false);
-    //     const updatedCandle = {
-    //         ...form
-    //     };
-
-    //     let setCandleName;
-    //     let setCandleImg;
-
-    //     if (props.setCandleId) {
-    //         const setCandle = props.candles.filter(candle => candle.id === props.setCandleId);
-    //         setFormIsValid(true);
-    
-    //         if (setCandle.length !== 0) {
-    //             let setCandleRealm = setCandle[0].realm;
-    //             setCandleName = setCandle[0].name;
-    //             setCandleImg = setCandle[0].img;
-    //             const setCandlePriceDollars = setCandle[0].priceDollars;
-    //             const setCandlePriceCents = setCandle[0].priceCents;
-    //             const setCandleDescription = setCandle[0].description;
+    const fetchShippingCountries = async (checkoutTokenId) => {
+        const {countries} = await commerce.services.localeListShippingCountries(checkoutTokenId);
         
-    //             const setCandleInfo = [setCandleRealm, setCandleName, setCandlePriceDollars, setCandlePriceCents, setCandleDescription, setCandleImg];
-        
-    //             updatedCandle.realm.elementConfig.options = props.realms.map(realm => ({
-    //                 value: realm.id, 
-    //                 displayValue: realm.name
-    //             }));
-                
-    //             props.realms.forEach(realm => {
-    //                 if (realm.id === setCandleRealm) {
-    //                     setCandleRealm = realm.name;
-    //                 }
-    //             });
-        
-    //             let i = 0;
-            
-    //             for (let key in updatedCandle) {
-    //                 if (key !== "img") {
-    //                     updatedCandle[key].value = setCandleInfo[i];
-    //                     i++;
-    //                 }
-    //             }
-    //         } else {
-    //             updatedCandle.realm.elementConfig.options = props.realms.map(realm => ({
-    //                 value: realm.id, 
-    //                 displayValue: realm.name
-    //             }));
-            
-    //             for (let key in updatedCandle) {
-    //                 updatedCandle[key].value = "";
-    //             }
+        setShippingCountries(countries);
+        setShippingCountry(Object.keys(countries)[0]);
+    }
 
-    //         }
-    //     } else {
-    //         updatedCandle.realm.elementConfig.options = props.realms.map(realm => ({
-    //             value: realm.id, 
-    //             displayValue: realm.name
-    //         }));
-            
-    //         for (let key in updatedCandle) {
-    //             updatedCandle[key].value = "";
-    //         }
-    //     }
+    const fetchSubdivisions = async (countryCode) => {
+        const {subdivisions} = await commerce.services.localeListSubdivisions(countryCode);
 
-    //     setForm(updatedCandle);
-    //     setCandleImage(<CandleImg 
-    //         name={setCandleName}
-    //         img={setCandleImg} />);
-    // }, [props.candles, props.realms, props.setCandleId]);
+        setShippingSubdivisions(subdivisions);
+        setShippingSubdivision(Object.keys(subdivisions)[0]);
+    }
 
-    // function submitHandler(event) {
-    //     event.preventDefault();
+    const fetchShippingOptions = async (checkoutTokenId, country, region = null) => {
+        const options = await commerce.checkout.getShippingOptions(checkoutTokenId, {country, region});
 
-    //     let formData = {};
-        
-    //     for (let formElementIdentifier in form) {
-    //         if (formElementIdentifier !== "img") {
-    //             formData[formElementIdentifier] = form[formElementIdentifier].value;
-    //         }
-    //     }
-
-    //     if (!formData.realm) {
-    //         formData = {
-    //             ...formData,
-    //             realm: props.realms[0].id
-    //         }
-    //     }
-
-    //     if (form.img.value) {
-    //         const uploadTask = storage.ref(`/images/${imageAsFile.name}`).put(imageAsFile);
-
-    //         uploadTask.on("state_changed", snapshot => {
-    //             setImgLoading(true);
-    //             setStatus(<ProgressBar animated variant="success" now={(snapshot.bytesTransferred / snapshot.totalBytes) * 100} />);
-    //         }, err => {
-    //             console.log(err);
-    //         }, () => {
-    //             storage.ref("images").child(imageAsFile.name).getDownloadURL()
-    //                 .then(firebaseUrl => {
-    //                     formData = {
-    //                         ...formData,
-    //                         img: firebaseUrl,
-    //                         imgName: imageAsFile.name
-    //                     };
-                
-    //                     if (props.setCandleId) {
-    //                         props.onEditCandle(props.token, formData, props.setCandleId);
-    //                     } else {
-    //                         props.onAddCandle(props.token, formData);
-    //                     }
-
-    //                     setImgLoading(false);
-    //                     setStatus(null);
-    //                     props.onClick();
-    //                 });
-    //         });
-    //     } else {
-    //         const setCandle = props.candles.filter(candle => candle.id === props.setCandleId);
-
-    //         if (props.setCandleId) {
-    //             formData = {
-    //                 ...formData,
-    //                 img: setCandle[0].img
-    //             };
-    //         }
-
-    //         if (props.setCandleId) {
-    //             props.onEditCandle(props.token, formData, props.setCandleId);
-    //         } else {
-    //             props.onAddCandle(props.token, formData);
-    //         }
-
-    //         props.onClick();
-    //     }
-    // }
-
-    // function inputChangedHandler(event, inputIdentifier) {
-    //     const updatedCandle = {
-    //         ...form
-    //     };
-    //     const updatedCandleElement = { 
-    //         ...updatedCandle[inputIdentifier]
-    //     };
-
-    //     console.log(event.target);
-        
-    //     if (event.target.type === "file") {
-    //         const image = event.target.files[0];
-    //         setImageAsFile(imageFile => (image));
-    //     }
-
-    //     updatedCandleElement.value = event.target.value;
-    //     updatedCandleElement.valid = checkValidity(updatedCandleElement.value, updatedCandleElement.validation);
-    //     updatedCandleElement.touched = true;
-    //     updatedCandle[inputIdentifier] = updatedCandleElement;
-        
-    //     let formIsValid = true;
-        
-    //     for (let inputIdentifier in updatedCandle) {
-    //         formIsValid = updatedCandle[inputIdentifier].valid && formIsValid;
-    //     }
-        
-    //     setForm(updatedCandle);
-    //     setFormIsValid(formIsValid);
-    // }
-
-    // function checkValidity(value, rules) {
-    //     let isValid = true;
-    //     if (!rules) {
-    //         return true;
-    //     }
-        
-    //     if (rules.required) {
-    //         isValid = value.trim() !== '' && isValid;
-    //     }
-
-    //     if (rules.isNumeric) {
-    //         const pattern = /^\d+$/;
-    //         isValid = pattern.test(value) && isValid
-    //     }
-
-    //     return isValid;
-    // }
-
-    // const formElementsArray = [];
-    
-    // for (let key in form) {
-    //     formElementsArray.push({
-    //         id: key,
-    //         config: form[key]
-    //     });
-    // }
-
-    // let newForm = (
-    //     <form onSubmit={submitHandler}>
-    //         {formElementsArray.map(formElement => (
-    //             <Input 
-    //                 key={formElement.id}
-    //                 id={formElement.id}
-    //                 elementType={formElement.config.elementType}
-    //                 elementConfig={formElement.config.elementConfig}
-    //                 value={formElement.config.value}
-    //                 invalid={!formElement.config.valid}
-    //                 shouldValidate={formElement.config.validation}
-    //                 touched={formElement.config.touched}
-    //                 label={formElement.config.label}
-    //                 changed={(event) => inputChangedHandler(event, formElement.id)} />
-    //         ))}
-    //         <Button btnType="Success" disabled={!formIsValid}>SUBMIT</Button>
-    //         <div className={classes.Cancel} onClick={props.onClick}>CANCEL</div>
-    //     </form> 
-    // );
-
-    // if (props.loading || imgLoading) {
-    //     newForm = (
-    //         <div className={classes.ImgLoading}>
-    //             <Spinner />
-    //             {status}
-    //         </div>    
-    //     );
-    // }
+        setShippingOptions(options);
+        setShippingOption(options[0].id);
+    }
 
     return (
-        <div className={classes.CandleEditorForm}>
-            {/* {candleImage}
-            {newForm} */}
+        <div className={classes.AddressForm}>
+            <Typography variant="h6" gutterBottom>Enter Your Shipping Information</Typography>
+            <FormProvider {...methods}>
+                <form onSubmit={methods.handleSubmit((data) => next({...data, shippingCountry, shippingSubdivision, shippingOption}))}>
+                    <Grid container spacing={3}>
+                        <Input required name="firstName" label="First Name" />
+                        <Input required name="lastName" label="Last Name" />
+                        <Input required name="address" label="Address" />
+                        <Input required name="email" label="Email" />
+                        <Input required name="city" label="City" />
+                        <Input required name="zip" label="Zip / Postal Code" />
+                        <Grid item xs={12} sm={6}>
+                            <InputLabel>Shipping Country</InputLabel>
+                            <Select value={shippingCountry} fullWidth onChange={(event) => setShippingCountry(event.target.value)} defaultValue="">
+                                {countries.map(country => (
+                                    <MenuItem key={country.id} value={country.id}>
+                                        {country.label}
+                                    </MenuItem>
+                                ))}
+                            </Select>
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                            <InputLabel>Shipping Subdivision</InputLabel>
+                            <Select value={shippingSubdivision} fullWidth onChange={(event) => setShippingSubdivision(event.target.value)} defaultValue="">
+                                {subdivisions.map(subdivision => (
+                                    <MenuItem key={subdivision.id} value={subdivision.id}>
+                                        {subdivision.label}
+                                    </MenuItem>
+                                ))}
+                            </Select>
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                            <InputLabel>Shipping Options</InputLabel>
+                            <Select value={shippingOption} fullWidth onChange={(event) => setShippingOption(event.target.value)} defaultValue="">
+                                {options.map(option => (
+                                    <MenuItem key={option.id} value={option.id}>
+                                        {option.label}
+                                    </MenuItem>
+                                ))}
+                            </Select>
+                        </Grid>
+                    </Grid>
+                    <br />
+                    <div style={{display: "flex", justifyContent: "space-between"}}>
+                        <Button component={Link} to="/cart" variant="outlined">Back to Cart</Button>
+                        <Button type="submit" variant="contained" color="primary">Next</Button>
+                    </div>
+                </form>
+            </FormProvider>
         </div>
     );
 }
-
 export default AddressForm;

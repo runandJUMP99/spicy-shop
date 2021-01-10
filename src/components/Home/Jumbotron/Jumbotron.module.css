@@ -1,6 +1,7 @@
 .Jumbotron {
     background: linear-gradient(to top,rgba(0, 0, 0, 0.4) 55%, transparent), 
     url("https://cdn.pixabay.com/photo/2016/11/23/17/24/automobile-1853936__340.jpg") 0%/cover no-repeat border-box;
+    height: 40vh;
     padding: 8rem 2rem;
     position: relative;
     text-align: center;
@@ -14,15 +15,21 @@
 
 .Jumbotron button {
     background: transparent;
-    border: 2px solid rgba(252, 248, 232, 0.9);
-    color:  rgba(252, 248, 232, 0.9);
+    border: none;
     cursor: pointer;
     font-size: 1.5rem;
+}
+
+
+.Jumbotron a {
+    border: 2px solid rgba(252, 248, 232, 0.9);
+    color:  rgba(252, 248, 232, 0.9);
     padding: 0.5rem;
+    text-decoration: none;
     transition: all 0.25s ease-out;
 }
 
-.Jumbotron button:hover {
+.Jumbotron a:hover {
     background: #fcf8e8;
     border: 2px solid #fcf8e8;
     color: #df7861;
