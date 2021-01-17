@@ -5,7 +5,12 @@ import {AddShoppingCart} from "@material-ui/icons";
 
 import classes from "./Product.module.css";
 
-const Product = ({addToCart, product}) => {
+const Product = ({addToCart, handleClick, product}) => {
+    function addItem() {
+        addToCart(product.id, 1);
+        handleClick();
+    }
+
     return (
         <div className={classes.Product}>
             <img src={product.media.source} alt={product.name} />
@@ -16,8 +21,8 @@ const Product = ({addToCart, product}) => {
                 </div>
                 <p className={classes.Description} dangerouslySetInnerHTML={{__html: product.description}}></p>
             </div>
-            <button onClick={() => addToCart(product.id, 1)}>
-                <NavLink to="/cart"><AddShoppingCart /></NavLink>
+            <button onClick={addItem}>
+                <AddShoppingCart />
             </button>
         </div>
     );

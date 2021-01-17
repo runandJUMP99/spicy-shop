@@ -4,11 +4,11 @@ import Product from "./Product/Product";
 
 import classes from "./Products.module.css";
 
-const Products = ({addToCart, products}) => {
+const Products = ({addToCart, handleClick, products}) => {
     return (
         <div className={classes.Products}>
             {products.map(product => (
-                <Product key={product.id} addToCart={addToCart} product={product} />
+                <Product key={product.id} addToCart={addToCart} handleClick={handleClick} product={product} />
             ))}
         </div>
     );

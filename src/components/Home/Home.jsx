@@ -8,13 +8,13 @@ import NewProducts from "./NewProducts/NewProducts";
 
 import classes from "./Home.module.css";
 
-const Home = () => {
+const Home = ({products}) => {
     return (
         <div className={classes.Home}>
             <Jumbotron />
-            <FeaturedProducts />
+            <FeaturedProducts products={products} />
             <AboutUs />
-            <NewProducts />
+            <NewProducts products={products} />
             <CTASection />
         </div>
     );

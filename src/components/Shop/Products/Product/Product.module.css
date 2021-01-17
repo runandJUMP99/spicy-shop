@@ -27,9 +27,10 @@
     border: none;
     border-radius: 50%;
     bottom: 0.5rem;
+    color: white;
     cursor: pointer;
     display: flex;
-    padding: 0;
+    padding: 0.5rem;
     position: absolute;
     right: 0.5rem;
     transition: all 0.25s ease-out;
@@ -37,11 +38,6 @@
 
 .Product button:hover {
     background: #f5a391;
-}
-
-.Product a {
-    color: white;
-    padding: 0.5rem;
 }
 
 .Text {

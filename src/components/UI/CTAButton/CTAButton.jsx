@@ -15,7 +15,7 @@ const CTAButton = ({styles, totalItems}) => {
             display: location.pathname === "/cart" && "none"
         }}>
             <NavLink to={location.pathname === "/shop" ? "/cart" : "/shop"} style={{borderRadius: location.pathname === "/shop" && "50%"}}>
-                <div className={classes.CartTotal}>{totalItems}</div>
+                <div className={classes.CartTotal} style={{display: !totalItems && "none"}}>{totalItems}</div>
                 {location.pathname !== "/shop" && "Start Shopping"} <ShoppingCartIcon />
             </NavLink>
         </button>

@@ -1,26 +1,14 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 
 import Products from "./Products/Products";
+import Spinner from "../UI/Spinner/Spinner";
 
 import classes from "./Shop.module.css";
-import {commerce} from "../../lib/commerce";
 
-const Shop = ({addToCart}) => {
-    const [products, setProducts] = useState([]);
-
-    useEffect(() => {
-        fetchProducts();
-    }, []);
-
-    const fetchProducts = async () => {
-        const {data} = await commerce.products.list();
-
-        setProducts(data);
-    }
-
+const Shop = ({addToCart, handleClick, products}) => {
     return (
-        <div className={classes.Products}>
-            <Products addToCart={addToCart} products={products} />
+        <div className={classes.Shop}>
+            {products.length === 0 ? <Spinner /> : <Products addToCart={addToCart} handleClick={handleClick} products={products} />}
         </div>
     );
 }

@@ -8,3 +8,8 @@
 .Paper {
     padding: 1rem 2rem;
 }
+
+.Form {
+    min-height: 15rem;
+    position: relative;
+}

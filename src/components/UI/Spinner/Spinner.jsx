@@ -2,8 +2,8 @@ import React from 'react';
 
 import classes from './Spinner.module.css';
 
-const Spinner = () => (
-    <div className={classes.LdsRipple}><div></div><div></div></div>
+const Spinner = ({color}) => (
+    <div className={classes.LdsRipple}><div style={color}></div><div style={color}></div></div>
 );
 
 export default Spinner;

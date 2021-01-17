@@ -4,7 +4,7 @@ import {Typography, Button} from "@material-ui/core";
 import {Elements, CardElement, ElementsConsumer} from "@stripe/react-stripe-js";
 import {loadStripe} from "@stripe/stripe-js";
 
-import OrderSummary from "./OrderSummary/OrderSummary";
+import OrderSummary from "../OrderSummary/OrderSummary";
 
 import classes from "./PaymentForm.module.css";
 

@@ -1,8 +1,9 @@
 import React, {useState} from "react";
+import {NavLink} from "react-router-dom";
 
 import classes from "./Product.module.css";
 
-const Product = () => {
+const Product = ({product}) => {
     const [mouseOver, setMouseOver] = useState(false);
 
     function handleMouseEnter() {
@@ -16,9 +17,10 @@ const Product = () => {
     return (
         <div className={classes.Product} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
             <div className={classes.Overlay} style={{opacity: !mouseOver && 0}}>
-                <button>Shop</button>
+                <h2>{product.name}</h2>
+                <button><NavLink to="/shop">Shop</NavLink></button>
             </div>
-            <img src="https://cdn.pixabay.com/photo/2017/08/01/11/48/blue-2564660_960_720.jpg" alt=""/>
+            <img src={product.media.source} alt={product.name} />
         </div>
     );
 }

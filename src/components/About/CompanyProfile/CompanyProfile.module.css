@@ -1,18 +1,30 @@
 .CompanyProfile {
-    display: flex;
-    padding: 3rem 1rem;
-    justify-content: space-around;
-}
-
-.CompanyProfile h2 {
-    color: #df7861;
+    width: 100%;
 }
 
 .CompanyProfile img {
-    width: 40%;
+    bottom: -10%;
+    object-fit:cover;
+    position: absolute;
+    transition: all 1.25s cubic-bezier(0.6, 0.08, 0.29, 0.88);
+    width: 100%;
 }
 
 .Text {
-    line-height: 1.5;
-    width: 40%;
+    left: 5%;
+    line-height: 2;
+    position: absolute; 
+    transition: all 1.25s ease-in-out;
+    width: 36%;
+    z-index: 5;
+}
+
+.Text h2 {
+    color: white;
+    font-size: 1.75rem;
+}
+
+.Text p {
+    color: #eedace;
+    font-size: 1.1rem;
 }
