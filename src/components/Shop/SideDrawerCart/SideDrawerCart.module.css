@@ -3,6 +3,7 @@
     font-weight: bold;
     height: 100%;
     max-width: 400px;
+    overflow: auto;
     position: fixed;
     right: 0;
     text-align: center;

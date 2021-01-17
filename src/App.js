@@ -10,7 +10,7 @@ import Footer from "./components/Footer/Footer";
 import Home from "./components/Home/Home";
 import Navbar from "./components/Navbar/Navbar";
 import Shop from "./components/Shop/Shop";
-import SideDrawerCart from "./components/UI/SideDrawerCart/SideDrawer";
+import SideDrawerCart from "./components/Shop/SideDrawerCart/SideDrawerCart";
 
 import {commerce} from "./lib/commerce";
 
@@ -88,13 +88,13 @@ function App() {
   return (
     <div className="App">
       <Backdrop show={show} handleClick={handleClick} />
-      <SideDrawerCart show={show} handleClick={handleClick} />
+      <SideDrawerCart cart={cart} handleEmptyCart={handleEmptyCart} handleUpdateCartQty={handleUpdateCartQty} handleRemoveFromCart={handleRemoveFromCart} show={show} handleClick={handleClick} />
       <Navbar totalItems={cart.total_items} />
         <Suspense fallback="Loading...">
           <Switch>
             <Route path="/" exact render={() => <Home products={products} />} />
             <Route path="/about" exact component={About} />
-            <Route path="/cart" exact render={() => <Cart cart={cart} handleEmptyCart={handleEmptyCart} handleUpdateCartQty={handleUpdateCartQty} handleRemoveFromCart={handleRemoveFromCart} />} />
+            <Route path="/cart" exact render={() => <Cart cart={cart} handleEmptyCart={handleEmptyCart} handleUpdateCartQty={handleUpdateCartQty} handleRemoveFromCart={handleRemoveFromCart} show={show} />} />
             <Route path="/checkout" exact render={() => <Checkout captureCheckout={captureCheckout} cart={cart} error={errorMessage} order={order} />} />
             <Route path="/contact" exact component={Contact} />
             <Route path="/shop" exact render={() => <Shop addToCart={addToCart} handleClick={handleClick} products={products} />} />

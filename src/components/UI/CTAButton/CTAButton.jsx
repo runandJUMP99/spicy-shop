@@ -11,12 +11,11 @@ const CTAButton = ({styles, totalItems}) => {
     return (
         <button className={classes.CTAButton} style={{
             ...styles,
-            borderRadius: location.pathname === "/shop" && "50%",
-            display: location.pathname === "/cart" && "none"
+            borderRadius: location.pathname === "/shop" && "50%"
         }}>
             <NavLink to={location.pathname === "/shop" ? "/cart" : "/shop"} style={{borderRadius: location.pathname === "/shop" && "50%"}}>
                 <div className={classes.CartTotal} style={{display: !totalItems && "none"}}>{totalItems}</div>
-                {location.pathname !== "/shop" && "Start Shopping"} <ShoppingCartIcon />
+                {location.pathname === "/shop" ? null : location.pathname === "/cart" ? "Continue Shopping" : "Start Shopping"} <ShoppingCartIcon />
             </NavLink>
         </button>
     );

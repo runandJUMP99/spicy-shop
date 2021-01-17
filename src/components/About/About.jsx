@@ -10,16 +10,10 @@ import OwnerProfile from "./OwnerProfile/OwnerProfile";
 import classes from "./About.module.css";
 
 const About = () => {
-    const [fade, setFade] = useState(false);
     const [profile, setProfile] = useState(true);
 
     function handleClick() {
-        setFade(true);
-
-        setTimeout(() => {
-            setProfile(prevValue => !prevValue);
-            setFade(false);
-        }, 500);
+        setProfile(prevValue => !prevValue);
     }
 
     return (

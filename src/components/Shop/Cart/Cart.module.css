@@ -2,6 +2,7 @@
     margin: auto;
     max-width: 800px;
     min-height: 30rem;
+    padding: 1rem 0;
     position: relative;
     width: 90%;
 }
@@ -11,13 +12,13 @@
 }
 
 .CartItems {
-    padding: 2rem 0;
+    padding: 0;
 }
 
 .Controls {
     display: flex;
     justify-content: flex-end;
-    margin: 2rem 0;
+    margin: 1rem 0;
     text-align: right;
 }
 
@@ -30,18 +31,19 @@
     align-items: center;
     border: none;
     cursor: pointer;
-    font-size: 1.5rem;
+    font-size: 1rem;
     display: flex;
     justify-content: space-between;
     padding: 0.5rem 1rem;
+    transition: all 0.25s ease-out;
 }
 
 .Checkout {
     background: #d4e2d4;
     border: none;
-    border-radius: 4px;
     color: #060668;
     margin-left: 1.5rem;
+    transition: all 0.25s ease-out;
 }
 
 .Checkout:hover {
@@ -55,7 +57,6 @@
 
 .EmptyCart {
     background: tomato;
-    border-radius: 4px;
     color: white;
 }
 

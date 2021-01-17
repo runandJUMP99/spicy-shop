@@ -1,6 +1,5 @@
 .Product {
     border: 1px solid black;
-    cursor: pointer;
     height: 20rem;
     margin: 1rem;
     overflow: hidden;
@@ -16,7 +15,7 @@
 
 .Overlay {
     align-items: center;
-    background: rgba(252, 248, 232, 0.7);
+    background: rgba(252, 248, 232, 0.8);
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -24,6 +23,11 @@
     position: absolute;
     transition: all 0.4s ease-out;
     width: 100%;
+}
+
+.Overlay h2 {
+    font-size: 1.75rem;
+    font-weight: normal;
 }
 
 .Overlay button {
@@ -39,4 +43,9 @@
     color: #fcf8e8;
     padding: 0.5rem 1rem;
     text-decoration: none;
+    transition: all 0.25s ease-out;
+}
+
+.Overlay a:hover {
+    background: #f5a391;
 }
