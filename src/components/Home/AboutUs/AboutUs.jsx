@@ -16,7 +16,7 @@ const AboutUs = () => {
                 <div className={classes.BigSquare}></div>
                 <div className={classes.MediumSquare}></div>
                 <div className={classes.LittleSquare}></div>
-                <img src="https://cdn.pixabay.com/photo/2016/11/22/10/47/girl-1848949_960_720.jpg" alt=""/>
+                <img src="https://cdn.pixabay.com/photo/2016/11/22/10/47/woman-1848949__340.jpg" alt=""/>
             </div>
         </div>
     );

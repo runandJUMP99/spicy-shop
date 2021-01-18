@@ -10,7 +10,9 @@ import Footer from "./components/Footer/Footer";
 import Home from "./components/Home/Home";
 import Navbar from "./components/Navbar/Navbar";
 import Shop from "./components/Shop/Shop";
+import SideDrawer from "./components/UI/SideDrawer/SideDrawer";
 import SideDrawerCart from "./components/Shop/SideDrawerCart/SideDrawerCart";
+import ToggleButton from "./components/UI/ToggleButton/ToggleButton";
 
 import {commerce} from "./lib/commerce";
 
@@ -88,8 +90,9 @@ function App() {
   return (
     <div className="App">
       <Backdrop show={show} handleClick={handleClick} />
+      <SideDrawer show={show} handleClick={handleClick} />
       <SideDrawerCart cart={cart} handleEmptyCart={handleEmptyCart} handleUpdateCartQty={handleUpdateCartQty} handleRemoveFromCart={handleRemoveFromCart} show={show} handleClick={handleClick} />
-      <Navbar totalItems={cart.total_items} />
+      <Navbar handleClick={handleClick} totalItems={cart.total_items} />
         <Suspense fallback="Loading...">
           <Switch>
             <Route path="/" exact render={() => <Home products={products} />} />
