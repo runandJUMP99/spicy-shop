@@ -30,6 +30,7 @@ const FeaturedProducts = ({products}) => {
     return (
         <div className={classes.FeaturedProducts}>
             <h2>Hottest Items</h2>
+            <p className={classes.Caption}>Browse through some of our top selling items to help bring the spice back into your life!</p>
             <div className={classes.Display}>
                 <div className={classes.ImgContainer} style={{opacity: fade ? 0 : 1}}>
                     {!item ? <Spinner color={{border: "4px solid white"}} /> : <img src={item.media.source} alt={item.name} />}

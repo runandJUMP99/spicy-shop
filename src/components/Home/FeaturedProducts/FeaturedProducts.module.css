@@ -5,6 +5,16 @@
     text-align: center;
 }
 
+.FeaturedProducts h2 {
+    margin-bottom: 0.5rem;
+}
+
+.Caption {
+    line-height: 1.5;
+    margin: auto;
+    width: 30%;
+}
+
 .Display {
     background: #ffe6d1;
     border-radius: 16px;

@@ -1,16 +1,34 @@
+/* .AboutUsContainer {
+    background: linear-gradient(to top,rgba(0, 0, 0, 0.3) 100%, transparent), 
+    url("https://firebasestorage.googleapis.com/v0/b/spicy-shop.appspot.com/o/COLOURlovers.com-%D0%90%D0%B1%D1%81%D1%82%D1%80%D0%B0%D0%BA%D1%86%D1%96%D1%8F.png?alt=media&token=dc3a3354-9fba-4a53-9073-666145c8cf9f") 40%/cover no-repeat border-box;
+    box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 4rem 0;
+} */
+
 .AboutUs {
     display: flex;
     justify-content: space-between;
-    margin: 4rem auto;
+    margin: auto;
     width: 80%;
 }
 
 .AboutUs p {
+    font-size: 1.25rem;
     line-height: 2;
 }
 
 .Text {
+    position: relative;
     width: 50%;
+}
+
+.Text img {
+    left: -40%;
+    opacity: 0.4;
+    position: absolute;
+    top: 0;
+    z-index: -1;
 }
 
 .Text button {
